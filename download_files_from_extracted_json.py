@@ -12,7 +12,7 @@ with sync_playwright() as p:
 
   # Define the path to your JSON file
   # json_file_path = "course_content.json"
-  json_file_path = "course_content-0-10.json"
+  json_file_path = "course_content-10-23.json"
   # Read the JSON data from the file
   with open(json_file_path, "r") as json_file:
       data = json.load(json_file)
@@ -42,11 +42,9 @@ with sync_playwright() as p:
           requestURLSearchString = 'player.vimeo.com/video'
           matching_response = None
           for response in video_page_url_responses:
-              # print('video_page_url_responses: ', response)
               if requestURLSearchString in response.url:
                   matching_response = response
                   break
-          # print('matching_response: ', matching_response)
           video_download_url = ''
           if matching_response is not None:
               response_json = matching_response.json()
@@ -57,7 +55,6 @@ with sync_playwright() as p:
                   video_download_url = item['url']
                   if item['width'] == 1280 and item['height'] == 720:
                       video_download_url = item['url']
-                      # print('video_download_url',video_download_url)
                       break
 
           video_index = video["video_index"]
