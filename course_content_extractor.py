@@ -135,12 +135,12 @@ def extract_course_content(url):
                     print('')
 
             # Add section information to the course_content dictionary
-            section_info = [{
+            section_info = {
                 "section_title": section_title,
                 "section_url": section_url,
                 "section_index": section_index,
                 "section_videos": section_videos,
-            }]
+            }
             with open(f'section-{section_index}.json', 'w') as json_file:
                 json.dump(section_info, json_file)
 

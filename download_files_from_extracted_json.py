@@ -12,7 +12,7 @@ with sync_playwright() as p:
 
   # Define the path to your JSON file
   # json_file_path = "course_content.json"
-  json_file_path = "section-1.json"
+  json_file_path = "course_content-0-10.json"
   # Read the JSON data from the file
   with open(json_file_path, "r") as json_file:
       data = json.load(json_file)
