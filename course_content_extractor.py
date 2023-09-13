@@ -164,5 +164,5 @@ if __name__ == "__main__":
     print(course_content_dict)
     with open('course_content.json', 'w') as json_file:
         json.dump(course_content_dict, json_file)
-    
+    print(f'Saved final course content dict to course_content.json')
 

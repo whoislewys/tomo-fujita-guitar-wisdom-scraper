@@ -7,8 +7,8 @@ with sync_playwright() as p:
   browser = p.chromium.launch(headless=False)
   page = browser.new_page()
   page.goto("https://tomovhxtv.vhx.tv/browse")
-  # Sleep for 30 seconds to let me sign in / login
-  page.wait_for_timeout(30 * 1000)
+  # Sleep for 20 seconds to let me sign in / login
+  page.wait_for_timeout(20 * 1000)
 
   # Define the path to your JSON file
   # json_file_path = "course_content.json"
@@ -46,7 +46,7 @@ with sync_playwright() as p:
               if requestURLSearchString in response.url:
                   matching_response = response
                   break
-          print('video response: ', matching_response)
+          # print('matching_response: ', matching_response)
           video_download_url = ''
           if matching_response is not None:
               response_json = matching_response.json()
