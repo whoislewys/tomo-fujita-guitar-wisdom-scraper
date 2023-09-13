@@ -38,7 +38,8 @@ def extract_course_content(url):
 
 
         for section_index in range(len(section_title_elems)):
-            section_title = section_title_elems[section_index].text.strip()
+            # Strip whitespace from title & replace forward slashes (/) with division signs (∕) to prevent errors in the video downloader where we use section title as the directory name
+            section_title = section_title_elems[section_index].text.strip().replace('/','∕')
             print('Scraping section index: ', section_index)
             print('Scraping section w/ title: ', section_title)
 
@@ -91,8 +92,8 @@ def extract_course_content(url):
                 video_description_elem = video_page_soup.select("div.text.site-font-secondary-color")[0]
 
                 if video_title_elem and video_description_elem and video_page_url_elem:
-                    # print('video_title_elem', video_title_elem)
-                    video_title = video_title_elem.text.strip()
+                    # Strip whitespace from title & replace forward slashes (/) with division signs (∕) to prevent errors in the video downloader where we use video title as the filename
+                    video_title = video_title_elem.text.strip().replace('/','∕')
                     print('video_title: ', video_title)
 
                     video_description = video_description_elem.text.strip()
