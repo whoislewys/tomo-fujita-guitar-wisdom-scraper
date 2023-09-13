@@ -50,12 +50,11 @@ with sync_playwright() as p:
           video_download_url = ''
           if matching_response is not None:
               response_json = matching_response.json()
-              # print('response_json: ', response_json)
-              # get the URL for the 720p video. its 60FPS, but smaller than 1080p.
               progressive_json_section = response_json['request']['files']['progressive']
-              # print('progressive_json_section: ', progressive_json_section)
               for item in progressive_json_section:
-                  # print('item [width]: ', item['width'])
+                  # Default to the first url, which seems to be a 1080p link present on all vids,
+                  # but prefer the URL for the 720p video because it's still 60FPS, but a lil smaller
+                  video_download_url = item['url']
                   if item['width'] == 1280 and item['height'] == 720:
                       video_download_url = item['url']
                       # print('video_download_url',video_download_url)
